@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <title>OOPizza</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Movie Ticket Pricing App</h1>
+      <h3>Figure out the price of a movie ticket:</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <form id="user-input">
+            <div class="form-group radio-group">
+              <label for="price-group">Select your your price category:</label>
+                <div class="radio">
+                  <label>
+                    <input class="radio-first" type="radio" name="price-group" value="under5">Children under 5
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="price-group" value="student">Student
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="price-group" value="adult">Adult
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="price-group" value="senior">Senior
+                  </label>
+                </div>
+            </div>
+
+            <div class="form-group radio-group">
+              <label for="time-group">Select day or evening:</label>
+                <div class="radio">
+                  <label>
+                    <input class="radio-first" type="radio" name="time-group" value="day">Day
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="time-group" value="evening">Evening
+                  </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label for="movie-group">Select your movie:</label>
+              <select class="form-control" id="movies">
+                <option selected disabled>Choose here:</option>
+                <option>Jason Bourne</option>
+                <option value="new">Pete's Dragon</option>
+                <option>Sausage Party</option>
+                <option>Suicide Squad</option>
+                <option value="new">Don't Breath</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn">Get Ticket Price</button>
+          </form>
+
+          <h2>Your Tickets:</h2>
+          <ul id="your-movies">
+
+          </ul>
+
+        </div>
+        <div class="col-md-6">
+          <div id="user-output">
+            <h2>Ticket</h2>
+
+            <p>Movie: <span class="movie-name"></span></p>
+            <p>Time: <span class="movie-time"></span></p>
+            <p>Price Category: <span class="movie-price"></span></p>
+
+            <p>Final Price: <span class="final-price"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery-1.12.0.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
