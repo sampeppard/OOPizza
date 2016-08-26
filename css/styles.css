@@ -11,6 +11,10 @@ h1 {
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
 input[type="checkbox"] {
   display: inline-block;
   float: left;

@@ -77,28 +77,28 @@ $(document).ready(function() {
 
   }); // end submit
 
-  // $("form#user-input").submit(function(event) {
-  //   event.preventDefault();
-  //
-  //   var userPriceCategory = $("input:radio[name=price-group]:checked").val();
-  //   var userTime = $("input:radio[name=time-group]:checked").val();
-  //   var userMovie = $("#movies").val();
-  //   var userMovieTitle = $("#movies option:selected").text();
-  //   var userTicket = new Ticket(userPriceCategory, userTime, userMovie, userMovieTitle);
-  //
-  //   userTicket.calcPrice();
-  //
-  //   $("#your-movies").append("<li class='listed-movie'>" + userMovieTitle + "</li>");
-  //
-  //   $(".listed-movie").last().click(function() {
-  //     $("#user-output").show();
-  //     $(".movie-name").text(userTicket.movieTitle);
-  //     $(".movie-time").text(userTicket.time);
-  //     $(".movie-price").text(userTicket.priceCategory);
-  //     $(".final-price").text("$" + userTicket.price + ".00");
-  //   }); // end click
-  //
-  //   reset();
-  // }); // end submit
+  $("form#user-input").submit(function(event) {
+    event.preventDefault();
+
+    var orderStyleInput = $("input:radio[name=order-style-group]:checked").val();
+    var sizeInpunt = $("input:radio[name=size-group]:checked").val();
+    var userMovie = $("#movies").val();
+    var userMovieTitle = $("#movies option:selected").text();
+    var userTicket = new Ticket(userPriceCategory, userTime, userMovie, userMovieTitle);
+
+    userTicket.calcPrice();
+
+    $("#your-movies").append("<li class='listed-movie'>" + userMovieTitle + "</li>");
+
+    $(".listed-movie").last().click(function() {
+      $("#user-output").show();
+      $(".movie-name").text(userTicket.movieTitle);
+      $(".movie-time").text(userTicket.time);
+      $(".movie-price").text(userTicket.priceCategory);
+      $(".final-price").text("$" + userTicket.price + ".00");
+    }); // end click
+
+    reset();
+  }); // end submit
 
 }); // end ready
