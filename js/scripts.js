@@ -31,30 +31,28 @@ Pizza.prototype.calcOrderStyle = function() {
 };
 
 Pizza.prototype.calcSize = function() {
-  if (this.size === "small") {
+  if (this.pizzaSize === "small") {
     this.price += 5;
   }
-  else if (this.size === "medium") {
+  else if (this.pizzaSize === "medium") {
     this.price += 8;
   }
-  else if (this.size === "large") {
+  else if (this.pizzaSize === "large") {
     this.price += 11;
   }
-  else if (this.size === "etra-large") {
+  else if (this.pizzaSize === "extra-large") {
     this.price += 14;
   }
 };
 
-Pizza.prototype.calcToppings = function() {
-  for (var i = 0; i < this.toppings.length; i++) {
-    this.price += 1;
-  }
-}
 
-Pizza.prototype.calcPrice = function() {
+Pizza.prototype.calcStyleSize = function() {
   this.calcOrderStyle();
   this.calcSize();
-  this.calcToppings();
+}
+
+Pizza.prototype.calcToppings = function(toppingsCount) {
+  this.price += toppingsCount;
 }
 
 // UI Logic
@@ -74,31 +72,36 @@ $(document).ready(function() {
 
     $("#name-output").text(newCustomer.fullName());
     $("#address-output").html(newCustomer.address());
+    $(".customer-profile-section").slideDown(500);
+    $("#user-input").slideDown(500);
 
   }); // end submit
 
   $("form#user-input").submit(function(event) {
     event.preventDefault();
 
-    var orderStyleInput = $("input:radio[name=order-style-group]:checked").val();
-    var sizeInpunt = $("input:radio[name=size-group]:checked").val();
-    var userMovie = $("#movies").val();
-    var userMovieTitle = $("#movies option:selected").text();
-    var userTicket = new Ticket(userPriceCategory, userTime, userMovie, userMovieTitle);
+    var orderStyleInput = $("input:radio[name='order-style-group']:checked").val();
+    var sizeInput = $("input:radio[name='size-group']:checked").val();
+    var toppingCountInput = $("input[type='checkbox']:checked").length;
+    var customerPizza = new Pizza(orderStyleInput, sizeInput);
 
-    userTicket.calcPrice();
+    customerPizza.calcStyleSize();
+    customerPizza.calcToppings(toppingCountInput);
 
-    $("#your-movies").append("<li class='listed-movie'>" + userMovieTitle + "</li>");
+    var profileName = $("#name-output").text();
 
-    $(".listed-movie").last().click(function() {
-      $("#user-output").show();
+    console.log(customerPizza.price);
+    $("#your-orders").append("<li class='listed-order'>" +  + "</li>");
+
+    $(".listed-order").last().click(function() {
+      $(".order-output-section").slideDown(500);
       $(".movie-name").text(userTicket.movieTitle);
       $(".movie-time").text(userTicket.time);
       $(".movie-price").text(userTicket.priceCategory);
       $(".final-price").text("$" + userTicket.price + ".00");
     }); // end click
 
-    reset();
+    //reset();
   }); // end submit
 
 }); // end ready
