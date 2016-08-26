@@ -3,15 +3,53 @@
   <head>
     <meta charset="utf-8">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <title>OOPizza</title>
   </head>
   <body>
+    <header>
+      <h1>OOPizza</h1>
+    </header>
+    <br>
+    <br>
     <div class="container">
-      <h1>Welcome to the OOPizza web app!</h1>
-      <h3>Fill in the specifications below to order your pizza.</h3>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-sm-12">
+          <h1>Welcome to the OOPizza web app!</h1>
+          <h3>Fill in the specifications below to order your pizza.</h3>
+        </div>
+        <div class="col-sm-6">
+          <form id="new-contact">
+            <div class="form-group">
+              <label for="new-name-first">First</label>
+              <input type="text" class="form-control" id="new-name-first">
+            </div>
+            <div class="form-group">
+              <label for="new-name-last">Last</label>
+              <input type="text" class="form-control" id="new-name-last">
+            </div>
+            <div class="form-group">
+              <label for="new-city">City</label>
+              <input type="text" class="form-control" id="new-address-city">
+            </div>
+            <div class="form-group">
+              <label for="new-state">State</label>
+              <input type="text" class="form-control" id="new-address-state">
+            </div>
+            <div class="form-group">
+              <label for="new-zip">Zip</label>
+              <input type="text" class="form-control" id="new-address-state">
+            </div>
+
+            <button type="submit" class="btn">Add</button>
+          </form>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-sm-6">
           <form id="user-input">
 
             <div class="form-group radio-group">
@@ -54,33 +92,44 @@
 
             <div class="form-group">
               <label for="movie-group">Check any toppings you would like:</label><br>
-              <label class="checkbox-inline"><input type="checkbox" value="pep">Pepperoni</label>
-              <label class="checkbox-inline"><input type="checkbox" value="xtra-cheese">Extra Cheese</label>
-              <label class="checkbox-inline"><input type="checkbox" value="">Sausage</label>
-              <label class="checkbox-inline"><input type="checkbox" value="pep">Pepperoni</label>
-              <label class="checkbox-inline"><input type="checkbox" value="xtra-cheese">Extra Cheese</label>
-              <label class="checkbox-inline"><input type="checkbox" value="">Sausage</label>
-              <label class="checkbox-inline"><input type="checkbox" value="pep">Pepperoni</label>
-              <label class="checkbox-inline"><input type="checkbox" value="xtra-cheese">Extra Cheese</label>
-              <label class="checkbox-inline"><input type="checkbox" value="">Sausage</label>
+              <div class="row topping-selection">
+                <div class="col-md-4">
+                  <label class="checkbox"><input type="checkbox" value="pep">Pepperoni</label>
+                  <label class="checkbox"><input type="checkbox" value="xtra-cheese">Extra Cheese</label>
+                  <label class="checkbox"><input type="checkbox" value="">Sausage</label>
+                  <label class="checkbox"><input type="checkbox" value="pep">Pineapple</label>
+                </div>
+                <div class="col-md-4">
+                  <label class="checkbox"><input type="checkbox" value="pep">Peppers</label>
+                  <label class="checkbox"><input type="checkbox" value="xtra-cheese">Onions</label>
+                  <label class="checkbox"><input type="checkbox" value="">Tomatoes</label>
+                  <label class="checkbox"><input type="checkbox" value="pep">Mushrooms</label>
+                </div>
+                <div class="col-md-4">
+                  <label class="checkbox"><input type="checkbox" value="pep">Bacon</label>
+                  <label class="checkbox"><input type="checkbox" value="xtra-cheese">Chorizo</label>
+                  <label class="checkbox"><input type="checkbox" value="">Pickles</label>
+                  <label class="checkbox"><input type="checkbox" value="pep">Broccoli</label>
+                </div>
+              </div>
             </div>
 
-            <button type="submit" class="btn">Get Ticket Price</button>
+            <button type="submit" class="btn">Order Pizza</button>
           </form>
 
-          <h2>Your Tickets:</h2>
-          <ul id="your-movies">
+          <h2>Your Orders:</h2>
+          <ul id="your-orders">
 
           </ul>
 
         </div>
         <div class="col-md-6">
           <div id="user-output">
-            <h2>Ticket</h2>
+            <h2>Order</h2>
 
-            <p>Movie: <span class="movie-name"></span></p>
-            <p>Time: <span class="movie-time"></span></p>
-            <p>Price Category: <span class="movie-price"></span></p>
+            <p>Pickup/Delivery: <span class="movie-name"></span></p>
+            <p>Size: <span class="movie-time"></span></p>
+            <p>Toppings: <span class="movie-price"></span></p>
 
             <p>Final Price: <span class="final-price"></p>
           </div>

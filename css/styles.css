@@ -1,7 +1,47 @@
 /* Reset ---------------------------------- */
 
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
 /* Base Styles ---------------------------------- */
 
 * {
   box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  float: left;
+}
+
+/* Section Styles ---------------------------------- */
+
+/* Header */
+
+header {
+  width: 100%;
+  height: 100px;
+  background-color: crimson;
+  background-image: url("../img/pizza-pattern.png");
+  font-family: 'Permanent Marker', cursive;
+  color: #ffffff;
+}
+
+header h1 {
+  padding: 20px;
+  font-size: 5em;
+}
+
+/* Toppings Section */
+
+.topping-selection {
+  padding: 0 20px;
+}
+
+/* Output */
+
+#user-output {
+  display: none;
 }
