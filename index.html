@@ -8,59 +8,61 @@
   </head>
   <body>
     <div class="container">
-      <h1>Movie Ticket Pricing App</h1>
-      <h3>Figure out the price of a movie ticket:</h3>
+      <h1>Welcome to the OOPizza web app!</h1>
+      <h3>Fill in the specifications below to order your pizza.</h3>
       <div class="row">
         <div class="col-md-6">
           <form id="user-input">
+
             <div class="form-group radio-group">
-              <label for="price-group">Select your your price category:</label>
+              <label for="time-group">Select pick-up or delivery:</label>
                 <div class="radio">
                   <label>
-                    <input class="radio-first" type="radio" name="price-group" value="under5">Children under 5
+                    <input class="radio-first" type="radio" name="pd-group" value="pickup">Pick-up
                   </label>
                 </div>
                 <div class="radio">
                   <label>
-                    <input type="radio" name="price-group" value="student">Student
-                  </label>
-                </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="price-group" value="adult">Adult
-                  </label>
-                </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="price-group" value="senior">Senior
+                    <input type="radio" name="pd-group" value="delivery">Delivery
                   </label>
                 </div>
             </div>
 
             <div class="form-group radio-group">
-              <label for="time-group">Select day or evening:</label>
+              <label for="size-group">Select your pizza size:</label>
                 <div class="radio">
                   <label>
-                    <input class="radio-first" type="radio" name="time-group" value="day">Day
+                    <input class="radio-first" type="radio" name="size-group" value="small">Small
                   </label>
                 </div>
                 <div class="radio">
                   <label>
-                    <input type="radio" name="time-group" value="evening">Evening
+                    <input type="radio" name="size-group" value="medium">Medium
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="size-group" value="large">Large
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="size-group" value="extra-large">Extra-large
                   </label>
                 </div>
             </div>
 
             <div class="form-group">
-              <label for="movie-group">Select your movie:</label>
-              <select class="form-control" id="movies">
-                <option selected disabled>Choose here:</option>
-                <option>Jason Bourne</option>
-                <option value="new">Pete's Dragon</option>
-                <option>Sausage Party</option>
-                <option>Suicide Squad</option>
-                <option value="new">Don't Breath</option>
-              </select>
+              <label for="movie-group">Check any toppings you would like:</label><br>
+              <label class="checkbox-inline"><input type="checkbox" value="pep">Pepperoni</label>
+              <label class="checkbox-inline"><input type="checkbox" value="xtra-cheese">Extra Cheese</label>
+              <label class="checkbox-inline"><input type="checkbox" value="">Sausage</label>
+              <label class="checkbox-inline"><input type="checkbox" value="pep">Pepperoni</label>
+              <label class="checkbox-inline"><input type="checkbox" value="xtra-cheese">Extra Cheese</label>
+              <label class="checkbox-inline"><input type="checkbox" value="">Sausage</label>
+              <label class="checkbox-inline"><input type="checkbox" value="pep">Pepperoni</label>
+              <label class="checkbox-inline"><input type="checkbox" value="xtra-cheese">Extra Cheese</label>
+              <label class="checkbox-inline"><input type="checkbox" value="">Sausage</label>
             </div>
 
             <button type="submit" class="btn">Get Ticket Price</button>
