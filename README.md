@@ -6,34 +6,29 @@ a client-side pizza shop web app using OOP
 
 ## Description
 
-
+A three step pizza order form that allows a user to create a profile, place multiple different pizza orders, and see the details of each order when clicked.
 
 ## Specifications
 
-#### 1.
+#### 1. Return user profile information after user creates profile, also reveal pizza order form
 
-* Example Input:
-* Example Output:
+* Example Input: Bob Smith, 123 Fake Street, Springfield NY, 12345
+* Example Output: Name: Bob Smith, Address: 123 Fake Street, City: Springfield  State: NY, Zip Code: 12345
 
-#### 2.
+#### 2. Return order listed with ID number after user enters enters order info
 
-* Example Input:
-* Example Output:
+* Example Input: Delivery, Large, Pepperoni
+* Example Output: Order 1
 
-#### 3. Return "ping" when a particular number is divisible by 3.
+#### 3. Return any other orders the user creates in the list of orders
 
-* Example Input:
-* Example Output:
+* Example Input: Pickup, Medium, Peppers
+* Example Output: Order 2
 
-#### 4. Return "pong" when a particular number is divisible by 5.
+#### 4. Return order info based on which listed order number user clicks
 
-* Example Input:
-* Example Output:
-
-#### 5. Return the list of numbers up to the entered number with zero exceptions.
-
-* Example Input:
-* Example Output:
+* Example Input: order 1 clicked
+* Example Output: Pickup/Deliver: Pickup, Size: large, Final Price: $14.00
 
 ## Setup/Installation Requirements
 

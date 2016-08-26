@@ -74,6 +74,7 @@ $(document).ready(function() {
     $("#address-output").html(newCustomer.address());
     $(".customer-profile-section").show();
     $("#user-input").show();
+    $("#order-list").show();
 
   }); // end submit
 
