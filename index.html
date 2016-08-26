@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="img/pizza-icon.png">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
@@ -20,7 +21,7 @@
           <h3>Fill in the specifications below to order your pizza.</h3>
         </div>
         <div class="col-sm-6">
-          <form id="new-contact">
+          <form id="new-customer">
             <div class="form-group">
               <label for="new-name-first">First</label>
               <input type="text" class="form-control" id="new-name-first">
@@ -28,6 +29,10 @@
             <div class="form-group">
               <label for="new-name-last">Last</label>
               <input type="text" class="form-control" id="new-name-last">
+            </div>
+            <div class="form-group">
+              <label for="new-city">Address</label>
+              <input type="text" class="form-control" id="new-address-street">
             </div>
             <div class="form-group">
               <label for="new-city">City</label>
@@ -39,11 +44,18 @@
             </div>
             <div class="form-group">
               <label for="new-zip">Zip</label>
-              <input type="text" class="form-control" id="new-address-state">
+              <input type="text" class="form-control" id="new-address-zip">
             </div>
 
-            <button type="submit" class="btn">Add</button>
+            <button type="submit" class="btn">Let's Order!</button>
           </form>
+        </div>
+        <div class="col-sm-6">
+          <div id="customer-profile-output">
+            <h1 id="name-output"></h1>
+            <br>
+            <div id="address-output"></div>
+          </div>
         </div>
       </div>
       <br>

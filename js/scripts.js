@@ -1,70 +1,104 @@
 // Business Logic
-var Ticket = function(priceCategory, time, movie, movieTitle) {
-  this.priceCategory = priceCategory;
-  this.time = time;
-  this.movie = movie;
-  this.movieTitle = movieTitle;
-  this.price = 11;
+
+var Customer = function(first, last, street, city, state, zip) {
+  this.firstName = first;
+  this.lastName = last;
+  this.street = street;
+  this.city = city;
+  this.state = state;
+  this.zip = zip;
 }
 
-Ticket.prototype.calcCategory = function() {
-  if (this.priceCategory === "under5") {
-    this.price -= 4;
-  }
-  else if (this.priceCategory === "student" || this.priceCategory === "senior") {
-    this.price -= 3;
-  }
+Customer.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
 }
 
-Ticket.prototype.calcTime = function() {
-  if (this.time === "day") {
-    this.price /= 2;
-  }
+Customer.prototype.address = function() {
+  return "<p>Address: " + this.street + "</p>" + "<p>City: " + this.city + "</p>" + "<p>State: " + this.state + "</p>" + "<p>Zip Code: " + this.zip + "</p>";
 }
 
-Ticket.prototype.calcMovie = function() {
-  if (this.movie === "new") {
+var Pizza = function(orderStyle, size) {
+  this.orderStyle= orderStyle;
+  this.pizzaSize = size;
+  this.toppings = [];
+  this.price = 0;
+};
+
+Pizza.prototype.calcOrderStyle = function() {
+  if (this.orderStyle === "delivery") {
+    this.price += 3;
+  }
+};
+
+Pizza.prototype.calcSize = function() {
+  if (this.size === "small") {
     this.price += 5;
   }
+  else if (this.size === "medium") {
+    this.price += 8;
+  }
+  else if (this.size === "large") {
+    this.price += 11;
+  }
+  else if (this.size === "etra-large") {
+    this.price += 14;
+  }
+};
+
+Pizza.prototype.calcToppings = function() {
+  for (var i = 0; i < this.toppings.length; i++) {
+    this.price += 1;
+  }
 }
 
-Ticket.prototype.calcPrice = function() {
-  this.calcCategory();
-  this.calcTime();
-  this.calcMovie();
-}
-
-var reset = function() {
-  $("input[type=radio]").prop("checked", function() {
-    return this.getAttribute("checked") == "checked";
-  });
-  $("#movies").val("Choose here:");
+Pizza.prototype.calcPrice = function() {
+  this.calcOrderStyle();
+  this.calcSize();
+  this.calcToppings();
 }
 
 // UI Logic
 $(document).ready(function() {
 
-  $("form#user-input").submit(function(event) {
+  $("form#new-customer").submit(function(event) {
     event.preventDefault();
 
-    var userPriceCategory = $("input:radio[name=price-group]:checked").val();
-    var userTime = $("input:radio[name=time-group]:checked").val();
-    var userMovie = $("#movies").val();
-    var userMovieTitle = $("#movies option:selected").text();
-    var userTicket = new Ticket(userPriceCategory, userTime, userMovie, userMovieTitle);
+    var firstNameInput = $("#new-name-first").val();
+    var lastNameInput = $("#new-name-last").val();
+    var streetInput = $("#new-address-street").val();
+    var cityInput = $("#new-address-city").val();
+    var stateInput = $("#new-address-state").val();
+    var zipInput = $("#new-address-zip").val();
 
-    userTicket.calcPrice();
+    var newCustomer = new Customer(firstNameInput, lastNameInput, streetInput, cityInput, stateInput, zipInput);
 
-    $("#your-movies").append("<li class='listed-movie'>" + userMovieTitle + "</li>");
+    $("#name-output").text(newCustomer.fullName());
+    $("#address-output").html(newCustomer.address());
 
-    $(".listed-movie").last().click(function() {
-      $("#user-output").show();
-      $(".movie-name").text(userTicket.movieTitle);
-      $(".movie-time").text(userTicket.time);
-      $(".movie-price").text(userTicket.priceCategory);
-      $(".final-price").text("$" + userTicket.price + ".00");
-    });
+  }); // end submit
 
-    reset();
-  });
+  // $("form#user-input").submit(function(event) {
+  //   event.preventDefault();
+  //
+  //   var userPriceCategory = $("input:radio[name=price-group]:checked").val();
+  //   var userTime = $("input:radio[name=time-group]:checked").val();
+  //   var userMovie = $("#movies").val();
+  //   var userMovieTitle = $("#movies option:selected").text();
+  //   var userTicket = new Ticket(userPriceCategory, userTime, userMovie, userMovieTitle);
+  //
+  //   userTicket.calcPrice();
+  //
+  //   $("#your-movies").append("<li class='listed-movie'>" + userMovieTitle + "</li>");
+  //
+  //   $(".listed-movie").last().click(function() {
+  //     $("#user-output").show();
+  //     $(".movie-name").text(userTicket.movieTitle);
+  //     $(".movie-time").text(userTicket.time);
+  //     $(".movie-price").text(userTicket.priceCategory);
+  //     $(".final-price").text("$" + userTicket.price + ".00");
+  //   }); // end click
+  //
+  //   reset();
+  // }); // end submit
+
 }); // end ready
