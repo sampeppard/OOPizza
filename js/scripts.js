@@ -7,21 +7,22 @@ var Customer = function(first, last, street, city, state, zip) {
   this.city = city;
   this.state = state;
   this.zip = zip;
-}
+};
 
 Customer.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
-}
+};
 
 Customer.prototype.address = function() {
   return "<p>Address: " + this.street + "</p>" + "<p>City: " + this.city + "</p>" + "<p>State: " + this.state + "</p>" + "<p>Zip Code: " + this.zip + "</p>";
-}
+};
 
-var Pizza = function(orderStyle, size) {
+var Pizza = function(orderStyle, size, orderID) {
   this.orderStyle= orderStyle;
   this.pizzaSize = size;
   this.toppings = [];
   this.price = 0;
+  this.orderID = orderID;
 };
 
 Pizza.prototype.calcOrderStyle = function() {
@@ -45,15 +46,14 @@ Pizza.prototype.calcSize = function() {
   }
 };
 
-
 Pizza.prototype.calcStyleSize = function() {
   this.calcOrderStyle();
   this.calcSize();
-}
+};
 
 Pizza.prototype.calcToppings = function(toppingsCount) {
   this.price += toppingsCount;
-}
+};
 
 // UI Logic
 $(document).ready(function() {
@@ -72,36 +72,36 @@ $(document).ready(function() {
 
     $("#name-output").text(newCustomer.fullName());
     $("#address-output").html(newCustomer.address());
-    $(".customer-profile-section").slideDown(500);
-    $("#user-input").slideDown(500);
+    $(".customer-profile-section").show();
+    $("#user-input").show();
 
   }); // end submit
 
+  var orderIncrement = 0;
+
   $("form#user-input").submit(function(event) {
     event.preventDefault();
-
+    orderIncrement++;
     var orderStyleInput = $("input:radio[name='order-style-group']:checked").val();
     var sizeInput = $("input:radio[name='size-group']:checked").val();
     var toppingCountInput = $("input[type='checkbox']:checked").length;
-    var customerPizza = new Pizza(orderStyleInput, sizeInput);
+    var customerPizza = new Pizza(orderStyleInput, sizeInput, orderIncrement);
 
     customerPizza.calcStyleSize();
     customerPizza.calcToppings(toppingCountInput);
 
     var profileName = $("#name-output").text();
 
-    console.log(customerPizza.price);
-    $("#your-orders").append("<li class='listed-order'>" +  + "</li>");
+    $("#your-orders").append("<li class='listed-order'>" + profileName + ": order " + customerPizza.orderID + "</li>");
 
     $(".listed-order").last().click(function() {
-      $(".order-output-section").slideDown(500);
-      $(".movie-name").text(userTicket.movieTitle);
-      $(".movie-time").text(userTicket.time);
-      $(".movie-price").text(userTicket.priceCategory);
-      $(".final-price").text("$" + userTicket.price + ".00");
+      $(".order-output-section").show();
+      $(".order-style-output").text(customerPizza.orderStyle);
+      $(".size-output").text(customerPizza.pizzaSize);
+
+      $(".final-price").text("$" + customerPizza.price + ".00");
     }); // end click
 
-    //reset();
   }); // end submit
 
 }); // end ready
