@@ -46,14 +46,14 @@ Pizza.prototype.calcSize = function() {
   }
 };
 
-Pizza.prototype.calcPrice = function(toppingCountInput) {
+Pizza.prototype.calcPrice = function() {
   this.calcOrderStyle();
   this.calcSize();
-  this.calcToppings(toppingCountInput);
+  this.calcToppings();
 };
 
-Pizza.prototype.calcToppings = function(toppingsCount) {
-  this.price += toppingsCount;
+Pizza.prototype.calcToppings = function() {
+  this.price += this.toppings.length;
 };
 
 // UI Logic
@@ -86,10 +86,13 @@ $(document).ready(function() {
     orderIncrement++;
     var orderStyleInput = $("input:radio[name='order-style-group']:checked").val();
     var sizeInput = $("input:radio[name='size-group']:checked").val();
-    var toppingCountInput = $("input[type='checkbox']:checked").length;
-    var customerPizza = new Pizza(orderStyleInput, sizeInput, orderIncrement);
+    // var toppingCountInput = $("input[type='checkbox']:checked").length;
 
-    customerPizza.calcPrice(toppingCountInput);
+    var customerPizza = new Pizza(orderStyleInput, sizeInput, orderIncrement);
+    $("input[type='checkbox']:checked").each(function(){
+      customerPizza.toppings.push($(this).val());
+    })
+    customerPizza.calcPrice();
 
     var profileName = $("#name-output").text();
 
