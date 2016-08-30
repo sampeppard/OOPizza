@@ -46,9 +46,10 @@ Pizza.prototype.calcSize = function() {
   }
 };
 
-Pizza.prototype.calcStyleSize = function() {
+Pizza.prototype.calcPrice = function(toppingCountInput) {
   this.calcOrderStyle();
   this.calcSize();
+  this.calcToppings(toppingCountInput);
 };
 
 Pizza.prototype.calcToppings = function(toppingsCount) {
@@ -88,8 +89,7 @@ $(document).ready(function() {
     var toppingCountInput = $("input[type='checkbox']:checked").length;
     var customerPizza = new Pizza(orderStyleInput, sizeInput, orderIncrement);
 
-    customerPizza.calcStyleSize();
-    customerPizza.calcToppings(toppingCountInput);
+    customerPizza.calcPrice(toppingCountInput);
 
     var profileName = $("#name-output").text();
 
