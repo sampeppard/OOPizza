@@ -15,8 +15,7 @@ A three step pizza order form that allows a user to create a profile, place mult
 ### **Specifications**
 | _Behavior_ | _Input_ | _Output_ |
 |:---------------------------------------------------------------------:|:---------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------:|
-| Return user profile information after user creates profile, also reveal pizza order form
- | Bob Smith, 123 Fake Street, Springfield NY, 12345 | Bob Smith, Address: 123 Fake Street, City: Springfield  State: NY, Zip Code: 12345 |
+| Return user profile information after user creates profile, also reveal pizza order form | Bob Smith, 123 Fake Street, Springfield NY, 12345 | Bob Smith, Address: 123 Fake Street, City: Springfield  State: NY, Zip Code: 12345 |
 | Return order listed with ID number after user enters enters order info | Delivery, Large, Pepperoni | Order 1 |
 | Return any other orders the user creates in the list of orders | Pickup, Medium, Peppers | Order 2 |
 | Return order info based on which listed order number user clicks | Order 1 clicke | Pickup/Deliver: Pickup, Size: large, Final Price: $14.00 |
